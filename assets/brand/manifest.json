@@ -1,0 +1,32 @@
+{
+  "checked": "2026-11-09",
+  "note": "Real photographs already published on makeupandhairbyelsa.com. Owner allowed these public images in Studio. No photographer license was printed on the pages, so none is added here. Contact sheet was used only to choose, and is not shipped.",
+  "photos": [
+    {
+      "id": "hero-veil-closeup",
+      "file": "assets/brand/hero-veil.webp",
+      "role": "Home cover",
+      "source_page": "https://makeupandhairbyelsa.com/",
+      "image_url": "https://makeupandhairbyelsa.com/wp-content/uploads/2026/05/EU0A4439-e1779135391889.jpg",
+      "source_file_name": "EU0A4439-e1779135391889.jpg",
+      "photographer": "unknown",
+      "credit": "Published on the Makeup and Hair by Elsa homepage. Photographer unknown; not printed on the page.",
+      "alt_en": "Close portrait of a bride in a lace veil, from the Makeup and Hair by Elsa website.",
+      "alt_es": "Retrato cercano de una novia con velo de encaje, del sitio de Makeup and Hair by Elsa.",
+      "focal": "50% 22%"
+    },
+    {
+      "id": "home-stylist-at-work",
+      "file": "assets/brand/stylist-at-work.webp",
+      "role": "Desktop side panel",
+      "source_page": "https://makeupandhairbyelsa.com/",
+      "image_url": "https://makeupandhairbyelsa.com/wp-content/uploads/2023/07/7-print-9023-1.webp",
+      "source_file_name": "7-print-9023-1.webp",
+      "photographer": "unknown",
+      "credit": "Published on the Makeup and Hair by Elsa homepage. Photographer unknown; not printed on the page.",
+      "alt_en": "A stylist arranging a bride’s hair, from the Makeup and Hair by Elsa website.",
+      "alt_es": "Una estilista arreglando el peinado de una novia, del sitio de Makeup and Hair by Elsa.",
+      "focal": "50% 18%"
+    }
+  ]
+}
