@@ -1,0 +1,80 @@
+:root{
+  --bg:#FFFDF9;
+  --paper:#ffffff;
+  --ink:#191919;
+  --muted:#3f3835;
+  --rose:#4A1942;
+  --pink:#F5DDD8;
+  --line:#e4dcd2;
+  --sage:#4A1942;
+  --amber:#8A2A22;
+  --taupe:#9E8A73;
+  --blush:#F5DDD8;
+  --plum:#4A1942;
+  --alert:#8A2A22;
+}
+html,body{background:#FFFDF9;color:#191919}
+body{font-family:Heebo,sans-serif}
+h1,h2.serif,.logo,.brand-small,.kpi-value,.cover-card h1,.goal-figure{font-family:Prata,Georgia,serif;font-weight:400;color:#191919}
+a{color:#4A1942}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid #4A1942;outline-offset:2px}
+.nav-bottom{background:#FFFDF9}
+.nav-bottom button{color:#3f3835;font-family:Heebo,sans-serif;font-weight:500;font-size:12px}
+.nav-bottom button.active,.side-nav button.active{color:#4A1942}
+.side-nav button{color:#191919}
+.side-nav button.active{background:#F5DDD8}
+.btn{font-family:Poppins,Heebo,sans-serif;font-weight:500;letter-spacing:.06em;text-transform:uppercase;font-size:13px;min-height:44px}
+.btn.primary{background:#4A1942;color:#fff;border-color:#4A1942}
+.btn.soft{background:#F5DDD8;color:#191919}
+.kicker{font-family:"Noto Serif Display",Georgia,serif;font-weight:300;font-style:italic;font-size:18px;line-height:1.35;color:#191919;margin:0}
+.owner-home{max-width:1100px}
+.cover-band{position:relative;background:#F5DDD8;border-radius:18px;overflow:hidden;aspect-ratio:4/3;max-height:300px}
+.cover-band img{width:100%;height:100%;object-fit:cover;object-position:50% 22%;display:block}
+.cover-card{position:relative;margin-top:-36px;background:#FFFDF9;border:1px solid #e4dcd2;border-radius:16px;padding:16px 16px 12px}
+.cover-card .stretch{min-width:0;flex:1;width:100%}
+.cover-card input,form input,form select,form textarea{width:100%;max-width:100%;box-sizing:border-box}
+.cover-card h1{font-size:clamp(28px,4vw,40px);line-height:1.15;margin:0 0 6px}
+.rose-rule{width:48px;height:2px;background:#C4746A;border:0;margin:8px 0 12px}
+.stitch{border:0;border-top:1px dashed #9E8A73;margin:14px 0}
+.status-line{font-size:13px;color:#3f3835;margin:8px 0 0}
+.lang-switch{display:flex;gap:6px;align-items:center}
+.lang-switch button{min-height:44px;min-width:44px;border:1px solid #9E8A73;background:#fff;color:#191919;border-radius:999px;font-family:Poppins,Heebo,sans-serif;font-size:13px;letter-spacing:.06em}
+.lang-switch button[aria-pressed="true"]{background:#4A1942;color:#fff;border-color:#4A1942}
+.owner-kpis{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:16px 0}
+.kpi{text-align:left;background:#fff;border:1px solid #e4dcd2;border-radius:14px;padding:12px;min-height:112px;color:#191919;width:100%}
+.kpi-label{display:block;font-size:13px;line-height:1.3;color:#3f3835}
+.kpi-value{display:block;font-size:clamp(22px,6vw,30px);line-height:1.15;margin:4px 0}
+.kpi-state{display:block;font-size:13px;line-height:1.35;color:#3f3835}
+.goal-panel{background:#F5DDD8;border-radius:16px;padding:16px;color:#191919}
+.goal-panel p,.goal-panel li{color:#191919}
+.owner-split{display:grid;gap:14px}
+.quiet-link{display:block;width:100%;text-align:left;background:#fff;border:1px solid #e4dcd2;border-radius:14px;padding:12px 14px;color:#191919;min-height:44px}
+.side-photo{display:none}
+.side-photo img{width:100%;height:280px;object-fit:cover;object-position:50% 18%;border-radius:16px;display:block}
+.photo-credit{font-size:12px;line-height:1.4;color:#3f3835;margin:6px 0 0}
+.price-row{padding:12px 0;border-bottom:1px solid #e4dcd2}
+.price-row p{margin:4px 0;overflow-wrap:anywhere}
+.badge{display:inline-block;font-family:Heebo,sans-serif;font-size:12px;letter-spacing:0;border:1px solid #9E8A73;border-radius:999px;padding:3px 8px;color:#191919;margin:0 4px 4px 0}
+.badge.calc{background:#F5DDD8}
+.badge.alert{border-color:#8A2A22;color:#8A2A22}
+.year-note{font-size:13px;color:#3f3835}
+.filterbar{display:flex;flex-wrap:wrap;gap:6px}
+.strategy-switch{display:flex;gap:8px;margin:0 0 12px}
+.lang-tag{font-size:13px;background:#F5DDD8;color:#191919;border-radius:10px;padding:8px 10px}
+.example-banner{background:#8A2A22;color:#fff;padding:10px 12px;border-radius:12px;margin:0 0 12px}
+.lang-gate{position:fixed;inset:0;background:rgba(25,25,25,.45);z-index:80;display:grid;place-items:end center;padding:16px}
+.lang-gate .sheet{background:#FFFDF9;color:#191919;border-radius:18px;padding:18px;width:min(420px,100%);margin-bottom:24px}
+.metric-list{margin:8px 0 0;padding-left:18px}
+@media(min-width:700px){
+  .owner-kpis{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .cover-band{aspect-ratio:21/9;max-height:340px}
+}
+@media(min-width:1024px){
+  .owner-layout{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(260px,.85fr);gap:18px;align-items:start}
+  .owner-kpis,.cover-wrap,.goal-panel{grid-column:1/-1}
+  .side-photo{display:block}
+}
+@media(max-width:699px){
+  .main{overflow-x:hidden;padding-bottom:calc(128px + var(--safe)) !important}
+  .owner-home,.price-row,.kpi{max-width:100%}
+}
