@@ -118,6 +118,10 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 .rev-path h3{font-family:Prata,Georgia,serif;font-weight:400;font-size:26px;margin:0 0 8px}
 .rev-path ul{margin:8px 0;padding-left:18px}
 .rev-status{font-weight:600}
+.rev-week{margin-top:14px;background:#fff;border-radius:16px;padding:14px;border:1px solid #e4dcd2}
+.rev-week h2{font-size:clamp(26px,6vw,34px)}
+.rev-week ol{margin:8px 0;padding-left:18px}
+.rev-week li{margin:8px 0}
 .rev details{background:#fff}
 @media(min-width:800px){
   .rev-grid.two{grid-template-columns:1fr 1fr}

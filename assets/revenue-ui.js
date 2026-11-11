@@ -230,7 +230,7 @@
     youBits += a.hoursLimit == null ? '<p>' + esc(t('noLimit')) + '</p>' : '<p>' + esc(t('limitLine', { n: num(a.hoursLimit, 0), status: statusLabel(youStatus) })) + ' ' + esc(t('heavier')) + '</p>';
     var sat = '<p id="rev-sat-figure" data-peak="' + (model.peak == null ? '' : model.peak.toFixed(4)) + '">' + esc(t('satCheck', { n: model.peak == null ? '—' : num(model.peak, 2) })) + '</p>';
     sat += a.teams == null ? '<p>' + esc(t('teamsAsk')) + '</p>' : '<p>' + esc(t('teamsLine', { n: num(a.teams, 0), status: statusLabel(satStatus) })) + '</p>';
-    return '<section class="rev-section" id="rev-time"><h2 class="serif">' + esc(t('timeTitle')) + '</h2><p>' + esc(t('timeFor', { name: pathName(viewPath) })) + '</p>' + youBits + sat + '<p>' + esc(t('teamWeek', { n: num(hours.team, 1) })) + '</p><h3>' + esc(t('flexTitle')) + '</h3><p>' + esc(t('visitsWeek', { n: num(perWeek, 1) })) + '</p><p>' + esc(t('visitsMonth', { n: num(perMonth, 1) })) + '</p><p>' + esc(t('handoff', { n: num(teamMonth, 1) })) + '</p><p>' + esc(t('hoursCaveat')) + '</p><p>' + esc(a.admin == null ? t('adminBlank') : '') + '</p><div class="rev-fields"><div><label for="rev-admin">' + esc(t('adminAdd')) + '</label><input id="rev-admin" inputmode="decimal" data-rev="admin" value="' + esc(a.admin == null ? '' : String(a.admin)) + '"></div><div><label for="rev-weeks-off">' + esc(t('weeksOff')) + '</label><input id="rev-weeks-off" inputmode="decimal" data-rev="weeks-off" value="' + esc(a.weeksOff == null ? '' : String(a.weeksOff)) + '"></div><div><label for="rev-busy-sat">' + esc(t('busySat')) + '</label><input id="rev-busy-sat" inputmode="decimal" data-rev="busy-sat" value="' + esc(String(a.peakSat)) + '"><p class="rev-en">' + esc(t('rough')) + ' ' + badge('ASSUMED') + '</p></div><div><label for="rev-season-share">' + esc(t('seasonShare')) + '</label><input id="rev-season-share" inputmode="decimal" data-rev="season-share" value="' + esc(String(Math.round(a.peakShare * 100))) + '"><p class="rev-en">' + esc(t('national')) + ' ' + badge('REF') + '</p></div></div><p>' + esc(hours.applied ? t('weeksOn', { n: hours.weeks }) : t('weeksBlank')) + '</p><p>' + esc(viewPath === 'lighter' ? t('pauseLight') : t('pause')) + '</p></section>';
+    return '<section class="rev-section" id="rev-time"><h2 class="serif">' + esc(t('timeTitle')) + '</h2><p>' + esc(t('timeFor', { name: pathName(viewPath) })) + '</p>' + youBits + sat + '<p>' + esc(t('teamWeek', { n: num(hours.team, 1) })) + '</p><h3>' + esc(t('flexTitle')) + '</h3><p>' + esc(t('visitsWeek', { n: num(perWeek, 1) })) + '</p><p>' + esc(t('visitsMonth', { n: num(perMonth, 1) })) + '</p><p>' + esc(t('handoff', { n: num(teamMonth, 1) })) + '</p><p>' + esc(t('hoursCaveat')) + '</p><p>' + esc(a.admin == null ? t('adminBlank') : '') + '</p><div class="rev-fields"><div><label for="rev-busy-sat">' + esc(t('busySat')) + '</label><input id="rev-busy-sat" inputmode="decimal" data-rev="busy-sat" value="' + esc(String(a.peakSat)) + '"><p class="rev-en">' + esc(t('rough')) + ' ' + badge('ASSUMED') + '</p></div><div><label for="rev-season-share">' + esc(t('seasonShare')) + '</label><input id="rev-season-share" inputmode="decimal" data-rev="season-share" value="' + esc(String(Math.round(a.peakShare * 100))) + '"><p class="rev-en">' + esc(t('national')) + ' ' + badge('REF') + '</p></div></div><p>' + esc(hours.applied ? t('weeksOn', { n: hours.weeks }) : t('weeksBlank')) + '</p><p>' + esc(viewPath === 'lighter' ? t('pauseLight') : t('pause')) + '</p></section>';
   }
   function ideaCard(item) {
     var formula = item.formula ? '<p>' + esc(lang() === 'es' ? item.formula.es : item.formula.en) + ' ' + badge('FACT') + badge('CALC') + '</p>' : '';
@@ -247,6 +247,113 @@
   function questions(a) {
     return '<section class="rev-section" id="rev-questions"><h2 class="serif">' + esc(t('questions')) + '</h2><div class="rev-fields"><div><label for="rev-party">' + esc(t('qParty')) + '</label><input id="rev-party" inputmode="decimal" data-rev="party" value="' + esc(String(a.party)) + '"> ' + badge('ASSUMED') + '</div><div><label for="rev-teams">' + esc(t('qTeams')) + '</label><input id="rev-teams" inputmode="decimal" data-rev="teams" value="' + esc(a.teams == null ? '' : String(a.teams)) + '"> ' + badge(a.teams == null ? 'ASK' : 'YOURS') + '</div><div><label for="rev-pay">' + esc(t('qPay')) + '</label><input id="rev-pay" inputmode="decimal" data-rev="pay" value="' + esc(a.pay == null ? '' : String(Math.round(a.pay * 100))) + '"> ' + badge(a.pay == null ? 'ASK' : 'YOURS') + '</div></div><button class="btn" type="button" data-action="rev-details" data-id="open">' + esc(t('moreQ')) + '</button></section>';
   }
+  function catalog(teen) {
+    var rows = [
+      { id: 'quince', dollars: 1400, hours: 8.5, capMonth: 2, priceEach: 280, people: 5 },
+      { id: 'group', dollars: 1120, hours: 7, capMonth: 4, priceEach: 280, people: 4 },
+      { id: 'prom', dollars: 1120, hours: 7, capMonth: 1, priceEach: 280, people: 4, teen: true },
+      { id: 'wedding', dollars: 1365, hours: 11.5, capMonth: 4, priceEach: 1365, people: 1, partyEach: 280, partyCount: 4 },
+      { id: 'class', dollars: 500, hours: 5, capMonth: 2, priceEach: 100, people: 5 },
+      { id: 'photo', dollars: 280, hours: 3, capMonth: 4, priceEach: 280, people: 1 },
+      { id: 'addon', dollars: 175, hours: 0.5, needsWedding: true, priceEach: 175, people: 1 }
+    ];
+    return rows.filter(function (row) { return !row.teen || teen; }).map(function (row) {
+      row.rate = row.dollars / row.hours;
+      return row;
+    }).sort(function (a, b) { return b.rate - a.rate; });
+  }
+  function plannerGoal(a) {
+    var g = API && API.goal ? API.goal() : null;
+    if (g && g.set && isFinite(Number(g.target))) return { amount: Number(g.target), example: false };
+    if (viewPath === 'lighter') return { amount: build('lighter', '100K', a).revenue, example: true };
+    var amount = viewLevel === '300K' ? 300000 : viewLevel === '200K' ? 200000 : 100000;
+    return { amount: amount, example: true };
+  }
+  function planWeek(opts) {
+    var hoursLimit = opts.hoursLimit;
+    var lighter = !!opts.lighter;
+    var planHours = hoursLimit;
+    if (lighter) planHours = 10;
+    var weeks = opts.weeksOff == null ? 52 : Math.max(1, 52 - opts.weeksOff);
+    var admin = opts.admin == null ? 0 : opts.admin;
+    var goal = opts.goal;
+    var teen = !!opts.teen;
+    var availWeek = planHours == null ? null : Math.max(0, planHours - admin);
+    var budget = availWeek == null ? null : availWeek * weeks;
+    var acts = catalog(teen);
+    var chosen = [];
+    var left = budget;
+    var weddings = 0;
+    function take(row, n) {
+      if (n < 1) return;
+      chosen.push({ id: row.id, n: n, dollars: n * row.dollars, hours: n * row.hours, eachHours: row.hours, priceEach: row.priceEach, people: row.people, partyEach: row.partyEach || 0, partyCount: row.partyCount || 0 });
+      left -= n * row.hours;
+      if (row.id === 'wedding') weddings = n;
+    }
+    if (left != null) {
+      acts.forEach(function (row) {
+        if (row.needsWedding || left < row.hours) return;
+        var cap = row.capMonth ? Math.round(row.capMonth * (weeks / 4.345)) : 100000;
+        var n = Math.floor(Math.min(cap, left / row.hours));
+        take(row, n);
+      });
+      var addon = acts.filter(function (row) { return row.id === 'addon'; })[0];
+      if (addon && weddings > 0 && left >= addon.hours) take(addon, Math.min(weddings, Math.floor(left / addon.hours)));
+    }
+    var produced = chosen.reduce(function (s, row) { return s + row.dollars + row.n * row.partyEach * row.partyCount; }, 0);
+    var hoursUsed = chosen.reduce(function (s, row) { return s + row.hours; }, 0);
+    var teamAppointments = chosen.reduce(function (s, row) {
+      if (row.id === 'wedding') return s + row.n * row.partyCount;
+      if (row.id === 'group' || row.id === 'prom') return s + Math.round(row.n * 0.5);
+      return s;
+    }, 0);
+    var teamHours = chosen.reduce(function (s, row) {
+      if (row.id === 'wedding') return s + row.n * row.partyCount * 1.5;
+      if (row.id === 'group' || row.id === 'prom') return s + row.n * row.eachHours * 0.5;
+      return s;
+    }, 0);
+    var status = 'need-hours';
+    var gap = goal == null ? null : goal - produced;
+    if (planHours != null && goal != null) {
+      if (produced >= goal) status = 'cover';
+      else if (produced >= goal * 0.9) status = 'close';
+      else status = 'short';
+    }
+    var rate = hoursUsed > 0 ? produced / hoursUsed : 0;
+    var addHours = status === 'close' && rate > 0 ? Math.max(1, Math.ceil((goal - produced) / rate)) : 0;
+    return {
+      planHours: planHours, produced: produced, chosen: chosen, status: status, gap: gap, addHours: addHours,
+      teamAppointments: teamAppointments, teamHours: teamHours, hoursUsed: hoursUsed, availWeek: availWeek, weeks: weeks
+    };
+  }
+  function weekPlanner(a) {
+    var goal = plannerGoal(a);
+    var teen = mix() && mix().teenGroups === true;
+    var lighter = mix() && mix().capacity && mix().capacity.weekLite === true;
+    var path = build(viewPath, viewPath === 'lighter' ? '100K' : viewLevel, a);
+    var bookings = path.weddings + path.other;
+    var avg = bookings ? Math.round(path.revenue / bookings) : 0;
+    var weeks = a.weeksOff == null ? 52 : Math.max(1, 52 - a.weeksOff);
+    var need = avg ? goal.amount / avg : 0;
+    var plan = planWeek({ hoursLimit: a.hoursLimit, admin: a.admin, weeksOff: a.weeksOff, goal: goal.amount, teen: teen, lighter: lighter });
+    var y = plan.availWeek == null || !path.visits ? null : plan.availWeek / (path.elsa / path.visits);
+    var list = plan.chosen.map(function (row) {
+      var perMonth = row.n / (weeks / 4.345);
+      var countLine = perMonth >= 1 ? t('doMonth', { n: num(Math.max(1, Math.round(perMonth)), 0) }) : t('doYear', { n: row.n });
+      var dollars = row.dollars + row.n * row.partyEach * row.partyCount;
+      return '<li data-act="' + row.id + '" data-each="' + row.priceEach + '" data-people="' + row.people + '"><strong>' + esc(t('act' + row.id.charAt(0).toUpperCase() + row.id.slice(1))) + '</strong><br>' + esc(countLine) + ' · ' + esc(t('adds', { amount: money(dollars) })) + ' ' + badge('FACT') + (row.people > 1 ? badge('CALC') : '') + '</li>';
+    }).join('');
+    var statusText = plan.status === 'cover' ? t('cover') : plan.status === 'close' ? t('closeGap', { n: plan.addHours }) : plan.status === 'short' ? t('shortGap', { amount: money(Math.max(0, plan.gap)) }) : t('setHours');
+    var teamWeekHours = weeks ? plan.teamHours / weeks : 0;
+    var teamLine = plan.planHours == null ? '' : '<p>' + esc(t('teamTake', { n: plan.teamAppointments, hours: num(teamWeekHours, 1) })) + '</p>';
+    var steps = plan.chosen.map(function (row) { return t('step' + row.id.charAt(0).toUpperCase() + row.id.slice(1)); }).filter(function (s, i, arr) { return arr.indexOf(s) === i; }).slice(0, 3);
+    while (steps.length < 3) {
+      var extra = [t('stepGroup'), t('stepWedding'), t('stepClass')];
+      if (steps.indexOf(extra[steps.length]) === -1) steps.push(extra[steps.length]);
+      else break;
+    }
+    return '<section class="rev-week" id="rev-week" data-status="' + plan.status + '" data-produced="' + Math.round(plan.produced) + '" data-goal="' + Math.round(goal.amount) + '" data-example="' + (goal.example ? '1' : '0') + '" data-acts="' + plan.chosen.map(function (row) { return row.id; }).join(',') + '" data-plan-hours="' + (plan.planHours == null ? '' : plan.planHours) + '"><h2 class="serif">' + esc(t('weekTitle')) + '</h2><p>' + esc(t('weekHelp')) + '</p><p>' + esc(goal.example ? t('usingExample') : t('usingYours')) + '</p><p>' + esc(t('needBookings', { n: num(Math.round(need), 0), week: num(need / weeks, 1), month: num(need / (weeks / 4.345), 1) })) + '</p><p>' + esc(t('avgBooking', { amount: money(avg) })) + ' ' + badge('CALC') + '</p>' + (y == null ? '<p>' + esc(t('setHours')) + '</p>' : '<p>' + esc(t('canDo', { h: num(plan.planHours, 0), y: num(y, 1) })) + '</p>') + '<h3>' + esc(t('fitTitle')) + '</h3><ol id="rev-week-list">' + list + '</ol><p id="rev-week-status">' + esc(statusText) + '</p>' + teamLine + '<p>' + esc(t('notCountedWeek')) + '</p><button class="btn' + (lighter ? ' primary' : '') + '" type="button" id="rev-week-lite" data-action="rev-week-light" aria-pressed="' + (lighter ? 'true' : 'false') + '">' + esc(t('weekLite')) + '</button>' + (lighter ? '<p>' + esc(t('weekLiteOn')) + '</p>' : '') + '<div class="rev-fields"><div><label for="rev-admin">' + esc(t('adminAdd')) + '</label><input id="rev-admin" inputmode="decimal" data-rev="admin" value="' + esc(a.admin == null ? '' : String(a.admin)) + '"></div><div><label for="rev-weeks-off">' + esc(t('weeksOff')) + '</label><input id="rev-weeks-off" inputmode="decimal" data-rev="weeks-off" value="' + esc(a.weeksOff == null ? '' : String(a.weeksOff)) + '"></div></div><h3>' + esc(t('todoTitle')) + '</h3><ol id="rev-week-todo">' + steps.map(function (s) { return '<li>' + esc(s) + '</li>'; }).join('') + '</ol><p>' + esc(t('todoOk')) + '</p></section>';
+  }
   function goalBlock(a) {
     var g = API.goal ? API.goal() : null;
     var st = state();
@@ -259,7 +366,7 @@
     } else if (g) gap = t('gapEmpty');
     var legacyHtml = legacy ? '<p>' + esc(t('legacy', { amount: money(st.settings.annualGoal) })) + '</p><div class="buttons"><button class="btn soft" type="button" data-action="use-legacy-goal">' + esc(t('keep')) + '</button><button class="btn" type="button" data-action="legacy-not-now">' + esc(t('notNow')) + '</button></div>' : '';
     var pressed = function (id) { return (mix() && mix().capacity && mix().capacity.hoursPace === id) ? 'true' : 'false'; };
-    return '<section class="rev-hours" id="rev-hours-hero"><p class="kicker">' + esc(t('kicker')) + '</p><h2>' + esc(t('hoursTitle')) + '</h2><p>' + esc(t('hoursHelp')) + '</p><div class="rev-picks" role="group"><button type="button" data-action="rev-pace" data-id="light" aria-pressed="' + pressed('light') + '">' + esc(t('light')) + '</button><button type="button" data-action="rev-pace" data-id="medium" aria-pressed="' + pressed('medium') + '">' + esc(t('medium')) + '</button><button type="button" data-action="rev-pace" data-id="full" aria-pressed="' + pressed('full') + '">' + esc(t('full')) + '</button></div><label for="rev-hours-limit">' + esc(t('hoursSet')) + '</label><input id="rev-hours-limit" inputmode="decimal" data-rev="hours-limit" value="' + esc(a.hoursLimit == null ? '' : String(a.hoursLimit)) + '" placeholder="' + esc(t('hoursBlank')) + '"><hr class="rose-rule"><h2 class="serif">' + esc(t('goalTitle')) + '</h2>' + (g ? '<p class="goal-figure">' + esc(money(g.target)) + '</p><p>' + esc(gap) + '</p><button class="btn soft" type="button" data-action="edit-goal">' + esc(t('editGoal')) + '</button>' : '<p><strong>' + esc(t('notSet')) + '</strong></p><p>' + esc(t('goalHelp')) + '</p><button class="btn primary" type="button" data-action="edit-goal">' + esc(t('setGoal')) + '</button>') + legacyHtml + '<p class="rev-en">' + esc(t('planNote')) + '</p></section>';
+    return '<section class="rev-hours" id="rev-hours-hero"><p class="kicker">' + esc(t('kicker')) + '</p><h2>' + esc(t('hoursTitle')) + '</h2><p>' + esc(t('hoursHelp')) + '</p><div class="rev-picks" role="group"><button type="button" data-action="rev-pace" data-id="light" aria-pressed="' + pressed('light') + '">' + esc(t('light')) + '</button><button type="button" data-action="rev-pace" data-id="medium" aria-pressed="' + pressed('medium') + '">' + esc(t('medium')) + '</button><button type="button" data-action="rev-pace" data-id="full" aria-pressed="' + pressed('full') + '">' + esc(t('full')) + '</button></div><label for="rev-hours-limit">' + esc(t('hoursSet')) + '</label><input id="rev-hours-limit" inputmode="decimal" data-rev="hours-limit" value="' + esc(a.hoursLimit == null ? '' : String(a.hoursLimit)) + '" placeholder="' + esc(t('hoursBlank')) + '">' + weekPlanner(a) + '<hr class="rose-rule"><h2 class="serif">' + esc(t('goalTitle')) + '</h2>' + (g ? '<p class="goal-figure">' + esc(money(g.target)) + '</p><p>' + esc(gap) + '</p><button class="btn soft" type="button" data-action="edit-goal">' + esc(t('editGoal')) + '</button>' : '<p><strong>' + esc(t('notSet')) + '</strong></p><p>' + esc(t('goalHelp')) + '</p><button class="btn primary" type="button" data-action="edit-goal">' + esc(t('setGoal')) + '</button>') + legacyHtml + '<p class="rev-en">' + esc(t('planNote')) + '</p></section>';
   }
   function planTotals() {
     var m = mix();
@@ -456,6 +563,15 @@
     if (action === 'rev-select') { viewPath = id || 'mostly'; rerender(); return; }
     if (action === 'rev-math') { mathOpen[id] = !mathOpen[id]; rerender(); return; }
     if (action === 'rev-details') { detailsOpen = id === 'open' ? true : !detailsOpen; rerender(); var el = document.getElementById('rev-details-body'); if (el && detailsOpen && el.scrollIntoView) el.scrollIntoView({ block: 'start' }); return; }
+    if (action === 'rev-week-light') {
+      var lite = ensure();
+      if (!lite) return;
+      lite.capacity.weekLite = !(lite.capacity.weekLite === true);
+      if (lite.chosenGoal == null) lite.chosenGoal = null;
+      touch();
+      rerender();
+      return;
+    }
     if (action === 'rev-pace') {
       var m = ensure();
       if (!m) return;
@@ -519,5 +635,5 @@
     var peak18 = build('mostly', '100K', Object.assign({}, a, { peakSat: 18 })).peak;
     return { rows: out, lighter: light.revenue, peak26: peak26, peak18: peak18, lightVisits: light.visits };
   }
-  root.ElsaRevenue = { render: render, handle: handle, onField: onField, audit: audit, afterRender: function () {} };
+  root.ElsaRevenue = { render: render, handle: handle, onField: onField, audit: audit, planWeek: planWeek, afterRender: function () {} };
 })(typeof window !== 'undefined' ? window : globalThis);
